@@ -14,10 +14,10 @@
     * Open a private window in your browser. Copy and paste the link to your pull request into the address bar. Make sure you can see your pull request properly. This helps the technical facilitator and learning support staff review your submission easily.
 
 Checklist:
-- [ ] Create a branch called `assignment-two`.
-- [ ] Ensure that the repository is public.
-- [ ] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
-- [ ] Verify that the link is accessible in a private browser window.
+- [x] Create a branch called `assignment-two`.
+- [x] Ensure that the repository is public.
+- [x] Review [the PR description guidelines](https://github.com/UofT-DSI/onboarding/blob/main/onboarding_documents/submissions.md#guidelines-for-pull-request-descriptions) and adhere to them.
+- [x] Verify that the link is accessible in a private browser window.
 
 If you encounter any difficulties or have questions, please don't hesitate to reach out to our team via our Slack at `#cohort-6-help`. Our Technical Facilitators and Learning Support staff are here to help you navigate any challenges.
 
@@ -54,7 +54,36 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+ARCHITECTURE 1 (type 1) :
+
+CUSTOMER_ADDRESS
+---------------
+customer_id (PK, FK > customer)
+street
+city
+province
+postal_code
+country
+
+
+ARCHITECTURE 2 (type 2) :
+
+CUSTOMER_ADDRESS
+---------------
+
+address_id (PK)
+customer_id (FK > customer)
+street
+city
+province
+postal_code
+country
+start_date 
+end_date (nullable, null = current address)
+
+
+Type 1 overwrites existing data with new values, since there is only one address per customer_id, which preserves only the latest information, while Type 2 adds a new row for each change indicated by address_id, thus retaining a full history of updates.
+
 ```
 
 ***
